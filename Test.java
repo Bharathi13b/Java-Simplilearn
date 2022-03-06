@@ -1,53 +1,32 @@
-package com.pillars;
-//Inheritance
+package com.email;
 
-	 class Bicycle {
-		  public int gear; 
-		    public int speed; 
-		    public Bicycle(int gear, int speed) 
-		    { 
-		        this.gear = gear; 
-		        this.speed = speed; 
-		    } 
-		    public void applyBrake(int decrement) 
-		    { 
-		        speed -= decrement; 
-		    } 
-		    public void speedUp(int increment) 
-		    { 
-		        speed += increment; 
-		    }  
-		    public String toString()  
-		    { 
-		        return("No of gears are " + gear + "\n" + "speed of bicycle is " + speed); 
-		    }  
-		} 
-		class MountainBike extends Bicycle  
-		{ 
-		    public int seatHeight; 
-		    public MountainBike(int gear,int speed,int startHeight) 
-		    {  
-		        super(gear, speed); 
-		        seatHeight = startHeight; 
-		    }  
-		    public void setHeight(int newValue) 
-		    { 
-		        seatHeight = newValue; 
-		    } 
-		    @Override
-		    public String toString() 
-		    { 
-		        return (super.toString()+ 
-		                "\nseat height is "+seatHeight); 
-		    } 
+import java.util.*;
+import java.util.regex.*;
+
+public class Test {
+
+	public static void main(String[] args) {
+		
+		List<String> emails = new ArrayList<String>();
+		// valid email addresses emails.add("ganesh@.com"); emails.add("rocky.rick@example.com"); emails.add("manoj@example.me.org");
+		//invalid email addresses emails.add("king.example.com"); emails.add("pavan..bob@example.com"); emails.add("srinu@.example.com");
+
+		for (String value : emails) {
+		System.out.println("The Email address " + value + " is " + (isValidEmail(value) ? "valid" : "invalid"));
+
 		}
-		public class Test  
-		{ 
-		    public static void main(String args[])  
-		    { 
-		        MountainBike mb = new MountainBike(3, 100, 25); 
-		        System.out.println(mb.toString());
-		    } 
+		System.out.println("Enter any email address to check"); Scanner sc = new Scanner(System.in);
+		String input = sc.nextLine();
+		System.out.println("The Email address " + input + " is " + (isValidEmail(input) ? "valid" : "invalid"));
 
 
-}
+		}
+
+		public static boolean isValidEmail(String email) { String regex = "^(.+)@(.+)$";
+		//initialize the Pattern object
+		Pattern pattern = Pattern.compile(regex); Matcher matcher = pattern.matcher(email); return matcher.matches();
+
+
+		}
+
+		}
